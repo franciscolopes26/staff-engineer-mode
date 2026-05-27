@@ -75,11 +75,11 @@ A unit test that mocks the boundary the change touches proves only that the mock
 
 ## Citation
 
-- *Working Effectively with Legacy Code*, Michael Feathers (2004), ch. 1 — "A unit test that talks to a database is not a unit test".
+- *Working Effectively with Legacy Code*, Michael Feathers (2004), ch. 2 "Working with Feedback" — "A unit test that talks to a database is not a unit test".
 - *The Pragmatic Programmer*, Hunt & Thomas (20th Anniversary ed., 2019), Tip 34 "Test Your Software, or Your Users Will".
 
 ## See also
 
-- @scripts/phase-5-verify.md
+- @scripts/verify.md
 - @references/working-effectively-with-legacy-code.md
 - @references/pragmatic-programmer.md

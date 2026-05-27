@@ -75,10 +75,10 @@ Programming by coincidence is the canonical failure mode here: you observe that 
 
 ## Citation
 
-- *The Pragmatic Programmer*, Hunt & Thomas (20th Anniversary ed., 2019), Tip 62 "Don't Program by Coincidence" / ch. 5 §27.
+- *The Pragmatic Programmer*, Hunt & Thomas (20th Anniversary ed., 2019), Tip 62 "Don't Program by Coincidence".
 - "3-Strike Architectural Rule" — widely-adopted community pattern for systematic debugging (obra/superpowers `systematic-debugging`).
 
 ## See also
 
-- @scripts/phase-1-investigate.md
+- @scripts/phase-checklist.md
 - @references/pragmatic-programmer.md
