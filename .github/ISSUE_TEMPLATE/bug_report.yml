@@ -1,0 +1,85 @@
+name: Bug in skill content or scripts
+description: A defect in the skill content (broken cross-reference, broken script, malformed manifest, etc.) that isn't an over-fire / under-fire / citation issue.
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: What is broken
+      description: Be specific. File path, the broken behavior, the expected behavior.
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: How to reproduce
+      description: Numbered steps a maintainer can follow.
+      placeholder: |
+        1. Run `python3 .github/scripts/check_references.py`
+        2. Observe error: ...
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected vs actual
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: OS
+      options:
+        - macOS
+        - Linux
+        - Windows
+        - other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: shell
+    attributes:
+      label: Shell
+      options:
+        - bash
+        - zsh
+        - fish
+        - PowerShell
+        - other
+
+  - type: input
+    id: version
+    attributes:
+      label: Skill version
+      placeholder: "1.0.0"
+    validations:
+      required: true
+
+  - type: input
+    id: claude
+    attributes:
+      label: Claude Code version (if relevant)
+      description: "Output of: claude --version"
+
+  - type: checkboxes
+    id: tools
+    attributes:
+      label: Tools installed (relevant for find-callers.sh)
+      options:
+        - label: ripgrep (rg)
+        - label: GNU grep
+        - label: GNU find
+        - label: jq
+        - label: gh CLI
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Logs / terminal output / screenshots
+      render: shell

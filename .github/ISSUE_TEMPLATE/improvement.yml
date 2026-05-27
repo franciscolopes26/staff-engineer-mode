@@ -1,0 +1,60 @@
+name: Improvement or new content proposal
+description: Suggest a new red flag, anti-pattern, playbook, script, reference, or improvement to existing content.
+title: "[proposal] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Proposals without a canonical citation are deferred (see [GOVERNANCE.md](../blob/main/GOVERNANCE.md)). The skill is curated, not assembled-by-committee.
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What you propose
+      description: One paragraph. New red flag? New playbook? Anti-pattern code example? Improvement to existing content?
+    validations:
+      required: true
+
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Why it belongs in this skill
+      description: Reference the principle this addresses, the existing section it complements or replaces.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: location
+    attributes:
+      label: Where it should live
+      multiple: true
+      options:
+        - "New row in SKILL.md Red Flag Detection Catalog (RF-XX)"
+        - "New file under anti-patterns/"
+        - "New file under playbooks/"
+        - "New file under scripts/"
+        - "New file under references/"
+        - "New file under examples/"
+        - "New cognitive move in MINDSET.md"
+        - "New cognitive move in SECURITY.md"
+        - "Modification to SKILL.md"
+        - "Other (specify in proposal)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: citation
+    attributes:
+      label: Canonical citation
+      description: Required. Book title + chapter, public talk + link, or 2+ community examples. Proposals without one are deferred per GOVERNANCE.md.
+      placeholder: |
+        e.g. *A Philosophy of Software Design* (Ousterhout, 2nd ed., 2021), ch. 4 "Modules Should Be Deep"
+    validations:
+      required: true
+
+  - type: textarea
+    id: draft
+    attributes:
+      label: Optional draft
+      description: Link a fork branch with your draft, or paste the proposed content directly.
