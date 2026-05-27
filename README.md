@@ -40,14 +40,34 @@ Most engineering mistakes are not from lack of knowledge. They are from skipping
 
 ## Installation
 
-This is a Claude Code plugin. Two commands inside any Claude Code session:
+Pick whichever path fits your workflow. Both install the same skill.
+
+### Option A — `npx skills` (recommended, community-canonical)
+
+One command, from your shell:
+
+```bash
+npx skills add https://github.com/franciscolopes26/staff-engineer-mode
+```
+
+If this is your first time using the `skills` CLI:
+
+```bash
+npx skills init
+```
+
+This is the install convention used by [claudemarketplaces.com](https://claudemarketplaces.com/) and most public Claude Code skill collections.
+
+### Option B — Claude Code plugin commands
+
+Inside any Claude Code session:
 
 ```text
 /plugin marketplace add franciscolopes26/staff-engineer-mode
 /plugin install staff-engineer-mode@staff-engineer-mode
 ```
 
-That's it. The plugin will be cloned into `~/.claude/plugins/cache/` and the skill becomes available in subsequent sessions. Reload with `/reload-plugins` if needed.
+The plugin is cloned into `~/.claude/plugins/cache/` and the skill becomes available in subsequent sessions. Reload with `/reload-plugins` if needed.
 
 Optionally, add an auto-load directive to your `~/.claude/CLAUDE.md`:
 

@@ -5,6 +5,8 @@ description: Principal-engineer operating mode for non-trivial coding (implement
 
 # Staff Engineer Mode
 
+> *A staff engineer is paid to **refuse** work that shouldn't be done, **name the trade-offs** of work that should, and **verify** the result of what gets shipped — code is the artefact, judgment is the job.*
+
 Operating mode, not a reference catalog. Sits *on top of* language- and framework-specific skills; does not replace them. Every principle cites a canonical source — depth in `references/`, paste-able helpers in `scripts/`, code examples in `anti-patterns/` and `examples/`.
 
 ## Iron Laws
@@ -24,6 +26,40 @@ Everything below is the elaboration.
 **Skip when:** rename, import re-order, one-line config, doc fix, throwaway spike, read-only Q&A.
 
 When in doubt, load. Loading-and-not-using is cheap; shipping-the-wrong-thing isn't.
+
+## Decision Tree — which path now?
+
+Once loaded, route to the right sub-flow before running all 5 phases blindly:
+
+```
+TASK INCOMING
+  │
+  ├── Read-only Q&A / typo / one-line rename?
+  │     → Skip. Just answer.
+  │
+  ├── CRISIS — prod broken, users affected?
+  │     → @playbooks/incident-response.md
+  │     → STABILIZE → CONTAIN → PRESERVE EVIDENCE → then Phases 1-5
+  │
+  ├── Reviewing someone else's non-trivial PR?
+  │     → @playbooks/pr-review.md
+  │
+  ├── Designing a new public surface (API / schema / event)?
+  │     → @playbooks/new-endpoint-design.md or schema-migration.md
+  │     → @playbooks/threat-model.md if it touches auth / money / PII
+  │
+  ├── Debugging, ≥ 3 hours in, stuck?
+  │     → @playbooks/debugging-marathon.md (invokes the 3-strike rule)
+  │
+  ├── Flaky test?
+  │     → @playbooks/flaky-test.md (NOT another retry)
+  │
+  └── Standard non-trivial change (most tasks)
+        → Full 5-phase loop below
+        → Cite RF-XX for any red flag detected
+        → @scripts/decisions.md for any non-trivial choice
+        → @scripts/calibrate.md when reporting "done"
+```
 
 ## The Operating Loop
 
@@ -227,6 +263,41 @@ In code review: cite the ID (`RF-03`). The IDs are stable across versions.
 
 ---
 
+## Common Rationalizations — the lies before they're told
+
+When the next sentence in your head matches column 1, replace it with column 2 and resume. These are the failure modes of a competent engineer under pressure — pre-named so they're catchable.
+
+| What you're tempted to think / say | What's actually true |
+|------------------------------------|----------------------|
+| "It's just a small refactor" | If it touches observable behavior, it's not a refactor. RF-02. Split the commits. |
+| "I'll add tests in a follow-up" | Follow-ups have a half-life of forever. Tests now, or document why not. |
+| "Tests pass, so it works" | `tsc` / `jest` / `pytest` verify shape — not feature behavior. RF-08. Exercise the real surface. |
+| "It works on my machine" | A signal, not a verification. Exercise the deployed surface. |
+| "This isn't really a migration" | If live-row shape or semantics changes, it is. Treat as one. |
+| "We can fix it in prod" | Reversible cheaply? Maybe. Irreversible or partial? No — confirm + canary first. |
+| "It's only X" | "Only" precedes most incidents. Name the failure mode out loud. |
+| "I trust the existing pattern" | RF-07 Cargo Cult. Verify the pattern fits THIS case before copying. |
+| "The diff is small, no decision record needed" | Decision records track trade-off complexity, not diff size. Write it. |
+| "I checked the permission earlier" | TOCTOU. State changes between check and use. Re-check, or hold a lock. |
+| "We don't have time to threat-model" | STRIDE takes 5 minutes. Remediation takes weeks. The trade is bad. |
+| "Trust me, I've done this before" | Probably right. Name the specific failure mode you're confident isn't here. |
+
+## Signals from the human that you're off-track
+
+When the *user* says these, the temptation is to capitulate. The right response is the opposite — these are the moments staff-engineer-mode is most needed.
+
+- **"Just do it"** → restate what's about to change irreversibly; get explicit go on those parts only.
+- **"Stop overthinking"** → cut over-engineering, not the contracts work. Phases 1-2 stay; Phase 3 may compress.
+- **"This is taking too long"** → likely a third-strike signal (RF-22). The model of the system is probably wrong, not the patch.
+- **"I trust you, ship it"** → calibration matters MORE here. Report verified / tested / assumed / not-checked (`@scripts/calibrate.md`).
+- **"We'll handle it later"** → write it down NOW (ticket / TODO with date) before it evaporates.
+- **"Just guess"** → never. Offer the smallest experiment that turns the guess into data.
+- **"Why are you asking?"** → because the question is the work. A 30-second answer prevents 30 minutes of rework.
+- **"Skip the test, it's urgent"** → only if rollback < 5min. Otherwise the test is cheaper than the incident.
+- **"It's just a small change"** → "small" is the property of the diff, not the blast radius. Classify reversibility first.
+
+---
+
 ## Interaction with Other Skills
 
 | Skill | Relationship |
@@ -296,6 +367,30 @@ In code review: cite the ID (`RF-03`). The IDs are stable across versions.
 | `@bench.md` | Verify the skill is firing (15 eval prompts with expected behavior) |
 
 ---
+
+## Closing Gate — tick before declaring done
+
+```
+[ ] No Iron Law broken
+    (1) understood code / (2) ran code / (3) accurately reported done
+
+[ ] Reversibility tier named
+    local / shared / hard-to-reverse / irreversible — and matched to discipline
+
+[ ] No red flag (RF-01 to RF-30) ignored
+    if detected, restart action taken (cite the ID)
+
+[ ] No mixed diff — one concern per commit (Two Hats)
+
+[ ] Failure modes from Phase 3: handle / fail-fast / accept — never swallow
+
+[ ] Real behavior exercised, OR explicit "I could not verify <surface>"
+
+[ ] Non-trivial choice → decision record (@scripts/decisions.md)
+
+[ ] If pushed to ship something I disagreed with → pushed back ONCE
+    with the specific reason; user confirmed; proceeded
+```
 
 ## One sentence
 
