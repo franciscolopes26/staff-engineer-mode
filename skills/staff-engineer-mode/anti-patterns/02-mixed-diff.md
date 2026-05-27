@@ -72,7 +72,7 @@ Each commit must answer exactly one question: "what did this change?". Mixing co
 
 ## Citation
 
-- *Refactoring*, Martin Fowler (2nd ed., 2018), ch. 1 — "Refactoring: A First Example" / "The Two Hats".
+- *Refactoring*, Martin Fowler (2nd ed., 2018), ch. 2 "Principles in Refactoring" — the formal Two Hats statement. The worked example demonstrating the discipline is in ch. 1 "A First Example".
 - *Software Engineering at Google*, Winters/Manshreck/Wright (2020), ch. 9 "Code Review" — small-CL discipline.
 
 ## See also

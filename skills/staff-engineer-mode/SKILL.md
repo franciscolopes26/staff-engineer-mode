@@ -144,7 +144,7 @@ If your code crosses a network or process boundary, these are the default surfac
 
 **Rule:** One concern per change. After each step, the system compiles + tests green + is shippable (flag-gated if half-built).
 
-**The Two Hats** *(Beck, via Fowler ch. 1)*: at any moment you wear exactly one — **adding function** OR **refactoring**. Never both. A diff combining the two is unreviewable.
+**The Two Hats** *(Beck, via Fowler ch. 2 "Principles in Refactoring")*: at any moment you wear exactly one — **adding function** OR **refactoring**. Never both. A diff combining the two is unreviewable.
 
 - **Refactor first, then change behavior.** Reshape so the change becomes easy, then make the easy change.
 - **One concern per commit when it matters** — security fixes, perf, feature toggles must be revert-able alone.

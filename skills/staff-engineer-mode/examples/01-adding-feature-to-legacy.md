@@ -207,12 +207,12 @@ Five surfaces exercised, including two non-happy paths. If the dev environment c
 
 | Phase | Discipline | Source |
 |-------|------------|--------|
-| 1 | Characterization tests, read callers, Chesterton's Fence | Feathers, *Working Effectively with Legacy Code*, ch. 12, 13 |
+| 1 | Characterization tests, read callers, Chesterton's Fence | Feathers, *Working Effectively with Legacy Code*, ch. 13 "Characterization Tests" |
 | 2 | Contract specification; Hyrum's Law on existing callers | *Software Engineering at Google*, ch. 1 |
 | 3 | Failure-mode enumeration; timeout + retry on remote calls | Nygard, *Release It!*, ch. 5 |
-| 4 | Two Hats; Extract Function; Sprout | Fowler, *Refactoring*, ch. 1; Feathers, *WEwLC*, ch. 6 |
+| 4 | Two Hats; Extract Function; Sprout | Fowler, *Refactoring*, ch. 2 "Principles in Refactoring"; Feathers, *WEwLC*, ch. 6 |
 | 4 | Boolean flag argument as smell (`sendEmail`) | Martin, *Clean Code*, ch. 3 |
-| 5 | "If it talks to the DB / network, it's not a unit test" | Feathers, *WEwLC*, ch. 1 |
+| 5 | "If it talks to the DB / network, it's not a unit test" | Feathers, *WEwLC*, ch. 2 "Working with Feedback" |
 | 5 | Deep modules check | Ousterhout, *A Philosophy of Software Design*, ch. 4 |
 
 ## The takeaway
