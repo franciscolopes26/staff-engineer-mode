@@ -203,6 +203,7 @@ After the change, ask: did this make the affected module **deeper** (simple inte
 - **Don't program by coincidence** — if your code works and you don't know why, you have a bug waiting. *(Pragmatic Tip 62.)*
 - **Conceptual integrity** — a coherent design held by one mind beats a feature-rich design assembled by committee. *(Brooks.)*
 - **Operational empathy** — imagine the on-call engineer at 3 a.m. Does the log line say *what* happened? Is the error actionable? You are not the last person to read your code.
+- **Hot path discipline** — any change on a high-traffic / latency-sensitive surface (auth, request middleware, feature-flag checks, rendering hot loop) needs an explicit **latency budget** named AND a **fail-open vs fail-closed** decision documented. A new sync call on the hot path that *blocks the request when its dependency is down* is one of the most common silent outages.
 - **Boy Scout Rule** — every PR leaves at least one touched file slightly cleaner. Don't bundle major cleanup into feature PRs; do bundle micro-cleanups always. *(Martin.)*
 
 ---
