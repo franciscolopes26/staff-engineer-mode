@@ -15,7 +15,7 @@ jobs:
     name: Validate plugin manifests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Validate plugin.json and marketplace.json
         run: python3 .github/scripts/validate_manifests.py
 
@@ -23,7 +23,7 @@ jobs:
     name: Check @-references resolve
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Validate all @-references in skill content
         run: python3 .github/scripts/check_references.py
 
@@ -31,7 +31,7 @@ jobs:
     name: Smoke-test find-callers.sh
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Install ripgrep
         run: sudo apt-get update && sudo apt-get install -y ripgrep
       - name: Make script executable
@@ -65,7 +65,7 @@ jobs:
     name: VERSION file present and SemVer-shaped
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: VERSION matches SemVer
         run: |
           v=$(cat VERSION | tr -d '[:space:]')
