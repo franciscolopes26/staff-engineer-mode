@@ -64,12 +64,13 @@ def send_sms_2fa(user_id: str, code: str, template_id: str) -> str:
 
 ## Reasoning
 
-Ousterhout calls this "designing for the future you don't have" — speculative generality that adds interface cost (more to read, more to mock, more to navigate) for zero present benefit. The Pragmatic Programmer's rule of three says: write it once, duplicate it the second time, extract on the third — because only at three cases can you see which parts genuinely vary and which are coincidence. Inheritance and interfaces are the most expensive coupling in the codebase; spend them on patterns that have proved themselves, not on guesses.
+The term "speculative generality" is Fowler's, from the *Refactoring* smell catalog — adding flexibility for hypothetical future needs that adds interface cost (more to read, more to mock, more to navigate) for zero present benefit. Ousterhout's parallel framing is that *somewhat-general* APIs are deeper than special-purpose ones, but designing for the imagined fourth caller before it exists almost always picks the wrong axis of variation. The Pragmatic Programmer's rule of three says: write it once, duplicate it the second time, extract on the third — because only at three cases can you see which parts genuinely vary and which are coincidence. Inheritance and interfaces are the most expensive coupling in the codebase; spend them on patterns that have proved themselves, not on guesses.
 
 ## Citation
 
-- *A Philosophy of Software Design*, John Ousterhout (2nd ed., 2021), ch. 19 "Software Trends" — speculative generality and the cost of pluggability.
-- *The Pragmatic Programmer*, Hunt & Thomas (20th Anniversary ed., 2019), §8 — the rule of three / DRY tempered by waiting for real duplication.
+- *Refactoring*, Martin Fowler (2nd ed., 2018), Smell Catalog: "Speculative Generality" — the canonical name for this anti-pattern.
+- *A Philosophy of Software Design*, John Ousterhout (2nd ed., 2021), ch. 6 "General-Purpose Modules are Deeper" — the case for *somewhat* general, with warnings against over-generalization.
+- *The Pragmatic Programmer*, Hunt & Thomas (20th Anniversary ed., 2019) — the "rule of three" discussion (DRY tempered by waiting for real duplication).
 
 ## See also
 

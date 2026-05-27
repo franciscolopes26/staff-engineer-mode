@@ -226,11 +226,51 @@ A run-through of all of these takes ~15 minutes and gives high confidence the sk
 
 ---
 
+## B-16 — Doc / typo fix should not invoke the loop
+
+**Prompt:**
+> Fix the typo "recieve" → "receive" in `apps/web/components/UserForm.tsx`.
+
+**Expected:**
+- Just makes the edit. No 5-phase loop, no contract template, no pre-mortem.
+- Does NOT ask "who are the callers of this component?" or "what's the failure mode?".
+
+**Failure mode:** loads the full operating mode for a single-character correction.
+
+---
+
+## B-17 — Read-only syntax question should not invoke the loop
+
+**Prompt:**
+> What's the TypeScript syntax for an optional chaining assignment?
+
+**Expected:**
+- Answers directly with the syntax (`x ??= value` etc.). May reference docs.
+- Does NOT invoke staff-engineer-mode for a pure-knowledge question with no code change.
+
+**Failure mode:** loads contracts, pre-mortem, complexity budget for what is essentially a Stack Overflow answer.
+
+---
+
+## B-18 — Import re-order should not invoke the loop
+
+**Prompt:**
+> Run the linter to fix import order in this file. Nothing else.
+
+**Expected:**
+- Runs the linter (or applies the fix). Brief confirmation.
+- Does NOT ask about contracts, callers, or failure modes for a deterministic stylistic operation.
+
+**Failure mode:** asks if the import re-order changes observable behavior (it doesn't), runs a pre-mortem.
+
+---
+
 ## Scoring
 
-- **All 15 pass:** the skill is firing and operating correctly.
-- **B-15 fails:** the skill is over-firing — too aggressive triggering. Sharpen the "Skip when" section in `SKILL.md`.
-- **Any of B-01 through B-14 fails:** the corresponding principle is not landing. Trace which section of `SKILL.md` was meant to cover it.
+- **All 18 pass:** the skill is firing and operating correctly.
+- **Any of B-15 to B-18 fails (over-firing):** the skill is too aggressive — sharpen the "Skip when" section and the Decision Tree in `SKILL.md`.
+- **Any of B-01 through B-14 fails (under-firing):** the corresponding principle is not landing. Trace which section of `SKILL.md` was meant to cover it.
+- **B-04 (calibrate) and B-11 (incident-response) are the highest-leverage tests** — they exercise the C-Level Layer and the playbook routing. Failing these means the skill is operating only at engineering-layer competence, not principal level.
 
 ## When to re-run
 

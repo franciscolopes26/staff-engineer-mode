@@ -34,13 +34,26 @@ EXCLUDES=(
   --glob '!target/**'
   --glob '!vendor/**'
   --glob '!.git/**'
+  --glob '!coverage/**'
+  --glob '!.nyc_output/**'
+  --glob '!.pytest_cache/**'
+  --glob '!__pycache__/**'
+  --glob '!.tox/**'
+  --glob '!venv/**'
+  --glob '!.venv/**'
   --glob '!*.lock'
   --glob '!*.lockb'
   --glob '!pnpm-lock.yaml'
   --glob '!package-lock.json'
   --glob '!yarn.lock'
+  --glob '!Cargo.lock'
+  --glob '!Pipfile.lock'
+  --glob '!poetry.lock'
+  --glob '!go.sum'
   --glob '!*.min.js'
   --glob '!*.bundle.js'
+  --glob '!*.html'
+  --glob '!*.htm'
 )
 
 if command -v rg >/dev/null 2>&1; then
@@ -49,7 +62,14 @@ if command -v rg >/dev/null 2>&1; then
     | grep -Ev '(function|class|def|const|let|var|fn|impl|type|interface|public|private|protected|export[[:space:]]+default|export[[:space:]]+(function|class|const|let|var))[[:space:]]+'"$SYMBOL"'\b' \
     || { echo "no callers found for '$SYMBOL' under '$ROOT'"; exit 1; }
 else
-  echo "(ripgrep not found; falling back to grep — install rg for speed)" >&2
-  grep -RIn --exclude-dir={node_modules,dist,build,.next,target,vendor,.git} -w -- "$SYMBOL" "$ROOT" \
+  echo "(ripgrep not found; falling back to grep — install rg for speed and better filtering)" >&2
+  grep -RIn \
+    --exclude-dir={node_modules,dist,build,.next,target,vendor,.git,coverage,.nyc_output,.pytest_cache,__pycache__,.tox,venv,.venv} \
+    --exclude='*.html' --exclude='*.htm' --exclude='*.min.js' --exclude='*.bundle.js' \
+    --exclude='*.lock' --exclude='*.lockb' --exclude='*-lock.json' \
+    --exclude='package-lock.json' --exclude='pnpm-lock.yaml' --exclude='yarn.lock' \
+    --exclude='Cargo.lock' --exclude='Pipfile.lock' --exclude='poetry.lock' --exclude='go.sum' \
+    -w -- "$SYMBOL" "$ROOT" \
+    | grep -Ev '(function|class|def|const|let|var|fn|impl|type|interface|public|private|protected|export[[:space:]]+default|export[[:space:]]+(function|class|const|let|var))[[:space:]]+'"$SYMBOL"'\b' \
     || { echo "no callers found for '$SYMBOL' under '$ROOT'"; exit 1; }
 fi

@@ -4,6 +4,11 @@
 
 [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](VERSION)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Status](https://img.shields.io/badge/status-v1%20%C2%B7%20untested%20at%20scale-orange.svg)](CHANGELOG.md)
+
+---
+
+> **Honest status note.** v1.0.0 is theoretically grounded but **empirically unproven**: zero usage data, `bench.md` evals not yet executed end-to-end, chapter citations not independently verified line-by-line. Use it, file issues — the skill is designed to improve from real feedback. See [CHANGELOG.md](CHANGELOG.md) for known issues.
 
 ---
 

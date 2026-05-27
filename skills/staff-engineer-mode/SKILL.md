@@ -39,7 +39,12 @@ TASK INCOMING
   │
   ├── CRISIS — prod broken, users affected?
   │     → @playbooks/incident-response.md
-  │     → STABILIZE → CONTAIN → PRESERVE EVIDENCE → then Phases 1-5
+  │     → STABILIZE first: **rollback the most recent deploy** if it's
+  │       a plausible cause — always cheaper than a forward fix.
+  │       Then feature-flag-off / config-mitigation / forward-fix in
+  │       that priority order.
+  │     → CONTAIN blast radius → PRESERVE EVIDENCE → then Phases 1-5
+  │     → Wait ≥1 full failure interval before declaring "resolved"
   │
   ├── Reviewing someone else's non-trivial PR?
   │     → @playbooks/pr-review.md

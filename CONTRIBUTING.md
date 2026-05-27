@@ -9,32 +9,41 @@ Contributions are welcome. The goals of this skill are:
 
 ## Ways to contribute
 
-### Add a scenario (proposed extension: `scenarios/`)
+### Add an example (`skills/staff-engineer-mode/examples/`)
 
-A *scenario* is a worked example showing the five-phase loop applied to a common engineering situation. Good scenarios:
+An *example* is a worked walkthrough showing the five-phase loop applied to a concrete situation. Good examples:
 
 - Pick a situation engineers face regularly (debugging a flaky test, adding a feature to legacy code, designing a new public API).
 - Show the WRONG approach briefly, then walk through the FIVE PHASES with concrete code.
 - Cite which books inform each phase's discipline.
-- Stay under ~150 lines.
+- Stay under ~250 lines. See `examples/01-adding-feature-to-legacy.md` as a template.
 
-### Add a language application note (proposed extension: `languages/`)
+### Add a playbook (`skills/staff-engineer-mode/playbooks/`)
 
-A *language* file translates the universal principles into idiomatic practice for one language. Good language notes:
+A *playbook* is a situation-specific recipe — a tactical workflow for a recurring scenario (incident response, PR review, threat-model, migration). Good playbooks:
+
+- Map each of the five phases to the situation in tight bullets, not paragraphs.
+- Reference scripts and red flags by ID — don't duplicate them. Use `@scripts/<file>.md` for templates; cite `RF-XX` for red flags.
+- Cite the canonical books briefly when invoking a principle.
+- Stay 60-100 lines. See `playbooks/incident-response.md` as a template.
+
+### Add an anti-pattern (`skills/staff-engineer-mode/anti-patterns/`)
+
+An *anti-pattern* file shows: the smell (real code), the fix (real code), and the reasoning (why the fix is better, with a citation). Good anti-pattern files:
+
+- Use real-looking code, not pseudocode. NO `// ... rest of implementation ...` placeholders.
+- Show the smallest meaningful example — 10–30 lines of code, not a full module.
+- Cite which book or principle calls out this anti-pattern.
+- Stay 50-100 lines total. See `anti-patterns/01-silent-swallow.md` as a template.
+
+### Add a language application note (proposed future extension: `languages/`)
+
+Not yet in the skill. A *language* file would translate the universal principles into idiomatic practice for one language. If contributed:
 
 - Map each phase or cross-cutting principle to language-specific tools and idioms.
 - Include short code snippets in that language.
 - Avoid framework lock-in — keep them about the *language*, not the framework.
 - Stay under ~250 lines.
-
-### Add an anti-pattern (proposed extension: `anti-patterns/`)
-
-An *anti-pattern* file shows: the smell (real code), the fix (real code), and the reasoning (why the fix is better, with a citation). Good anti-pattern files:
-
-- Use real-looking code, not pseudocode.
-- Show the smallest meaningful example — 10–30 lines, not a full module.
-- Cite which book or principle calls out this anti-pattern.
-- Stay under ~80 lines.
 
 ### Add a helper script (`scripts/`)
 
