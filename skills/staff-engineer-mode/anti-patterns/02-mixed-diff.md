@@ -78,4 +78,4 @@ Each commit must answer exactly one question: "what did this change?". Mixing co
 ## See also
 
 - @references/refactoring.md
-- @references/sweg.md
+- @references/software-engineering-at-google.md

@@ -2,9 +2,11 @@
 
 > An operating-mode skill for Claude Code that activates staff/principal engineer thinking on any non-trivial coding task. Grounded in the canonical software engineering literature.
 
+[![CI](https://github.com/franciscolopes26/staff-engineer-mode/actions/workflows/ci.yml/badge.svg)](https://github.com/franciscolopes26/staff-engineer-mode/actions/workflows/ci.yml)
 [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](VERSION)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/status-v1%20%C2%B7%20untested%20at%20scale-orange.svg)](CHANGELOG.md)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
 ---
 

@@ -85,4 +85,4 @@ Every long-lived process accumulates state — connections, sessions, log lines,
 ## See also
 
 - @references/release-it.md
-- @references/ddia.md
+- @references/designing-data-intensive-applications.md

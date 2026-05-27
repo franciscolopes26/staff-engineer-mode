@@ -1,0 +1,75 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-manifests:
+    name: Validate plugin manifests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate plugin.json and marketplace.json
+        run: python3 .github/scripts/validate_manifests.py
+
+  check-references:
+    name: Check @-references resolve
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate all @-references in skill content
+        run: python3 .github/scripts/check_references.py
+
+  check-find-callers-script:
+    name: Smoke-test find-callers.sh
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install ripgrep
+        run: sudo apt-get update && sudo apt-get install -y ripgrep
+      - name: Make script executable
+        run: chmod +x skills/staff-engineer-mode/scripts/find-callers.sh
+      - name: No-args invocation prints usage and exits non-zero
+        run: |
+          set +e
+          output=$(./skills/staff-engineer-mode/scripts/find-callers.sh 2>&1)
+          rc=$?
+          if [ "$rc" -eq 0 ]; then
+            echo "FAIL: expected non-zero exit when called without args"
+            exit 1
+          fi
+          echo "$output" | grep -q "usage:" || { echo "FAIL: usage line missing"; exit 1; }
+          echo "OK"
+      - name: Searches for itself in the repo and finds a match
+        run: |
+          ./skills/staff-engineer-mode/scripts/find-callers.sh check_references . | head -5
+      - name: Nonexistent symbol exits non-zero
+        run: |
+          set +e
+          ./skills/staff-engineer-mode/scripts/find-callers.sh xyzDefinitelyNotASymbol_123 . > /dev/null
+          rc=$?
+          if [ "$rc" -eq 0 ]; then
+            echo "FAIL: expected non-zero exit for missing symbol"
+            exit 1
+          fi
+          echo "OK"
+
+  check-version-tag-consistency:
+    name: VERSION file present and SemVer-shaped
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: VERSION matches SemVer
+        run: |
+          v=$(cat VERSION | tr -d '[:space:]')
+          echo "VERSION = '$v'"
+          echo "$v" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$' \
+            || { echo "FAIL: not SemVer"; exit 1; }
+          echo "OK"

@@ -81,4 +81,4 @@ Every integration point is a failure point. The defenses — Timeout, Circuit Br
 ## See also
 
 - @references/release-it.md
-- @references/ddia.md
+- @references/designing-data-intensive-applications.md
