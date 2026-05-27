@@ -1,0 +1,58 @@
+# NOTICE — Attributions and Sources
+
+The `staff-engineer-mode` skill distills principles from canonical software engineering literature. The skill itself is original work; it cites and references the books below but does not reproduce copyrighted text beyond fair-use quotation. Each principle in `SKILL.md` is attributed to its source.
+
+The reference files in `references/` contain short quotations attributed to their original authors and link to authoritative sources. All quotations are used under fair-use principles for commentary, criticism, and educational purposes.
+
+## Source works
+
+1. **The Pragmatic Programmer: Your Journey to Mastery, 20th Anniversary Edition**
+   Andy Hunt and Dave Thomas. Addison-Wesley Professional, 2019. ISBN 978-0135957059.
+   <https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/>
+
+2. **Clean Code: A Handbook of Agile Software Craftsmanship**
+   Robert C. Martin. Prentice Hall, 2008. ISBN 978-0132350884.
+
+3. **Code Complete: A Practical Handbook of Software Construction, 2nd Edition**
+   Steve McConnell. Microsoft Press, 2004. ISBN 978-0735619678.
+
+4. **A Philosophy of Software Design, 2nd Edition**
+   John Ousterhout. Yaknyam Press, 2021. ISBN 978-1732102217.
+   <https://web.stanford.edu/~ouster/cgi-bin/book.php>
+
+5. **Refactoring: Improving the Design of Existing Code, 2nd Edition**
+   Martin Fowler. Addison-Wesley Professional, 2018. ISBN 978-0134757599.
+   <https://refactoring.com/>
+
+6. **The Mythical Man-Month: Essays on Software Engineering, Anniversary Edition**
+   Frederick P. Brooks Jr. Addison-Wesley Professional, 1995. ISBN 978-0201835953.
+
+7. **Designing Data-Intensive Applications**
+   Martin Kleppmann. O'Reilly Media, 2017. ISBN 978-1449373320.
+   <https://dataintensive.net/>
+
+8. **Working Effectively with Legacy Code**
+   Michael C. Feathers. Prentice Hall, 2004. ISBN 978-0131177055.
+
+9. **Release It!: Design and Deploy Production-Ready Software, 2nd Edition**
+   Michael T. Nygard. Pragmatic Bookshelf, 2018. ISBN 978-1680502398.
+   <https://pragprog.com/titles/mnee2/release-it-second-edition/>
+
+10. **Software Engineering at Google: Lessons Learned from Programming Over Time**
+    Titus Winters, Tom Manshreck, Hyrum Wright (editors). O'Reilly Media, 2020. ISBN 978-1492082798.
+    Freely available online at <https://abseil.io/resources/swe-book>.
+
+## Independent concepts cited
+
+- **Hyrum's Law** — Hyrum Wright. <https://www.hyrumslaw.com/>
+- **Chesterton's Fence** — G.K. Chesterton, *The Thing* (1929).
+- **Two Hats / Make the change easy, then make the easy change** — Kent Beck, attributed via Fowler's *Refactoring*.
+- **Postel's Robustness Principle** — Jon Postel, RFC 760 / RFC 1122.
+
+## How to cite this skill
+
+If you draw from this skill in your own work, attribution is appreciated but not required:
+
+> staff-engineer-mode skill (2026). MIT License.
+
+Always cite the underlying books when you use a principle from them — they did the original work.
