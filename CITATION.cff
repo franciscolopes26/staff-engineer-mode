@@ -1,0 +1,111 @@
+cff-version: 1.2.0
+title: "staff-engineer-mode: a Claude Code skill for principal-engineer thinking"
+message: >-
+  If you use this skill in your work or write about it,
+  please cite both this software AND the underlying source
+  books (see NOTICE for full ISBN attributions).
+type: software
+authors:
+  - given-names: Francisco
+    family-names: Lopes
+    affiliation: Independent
+repository-code: "https://github.com/franciscolopes26/staff-engineer-mode"
+url: "https://github.com/franciscolopes26/staff-engineer-mode"
+abstract: >-
+  An operating-mode skill for Claude Code that activates
+  principal-engineer thinking on non-trivial coding tasks.
+  Enforces a 5-phase loop (UNDERSTAND, SPECIFY, PRE-MORTEM,
+  CHANGE, VERIFY), a 30-item red-flag detection catalogue
+  with restart actions, the 3-strike rule, cognitive layers
+  for software thinking and attack-surface thinking, and
+  paste-able templates per phase. Grounded chapter-by-chapter
+  in 10 canonical software-engineering books.
+keywords:
+  - claude-code
+  - claude-skill
+  - software-engineering
+  - principal-engineer
+  - staff-engineer
+  - code-review
+  - refactoring
+  - debugging
+  - architecture
+  - security
+  - threat-modeling
+license: MIT
+version: 1.0.0
+date-released: "2026-05-27"
+references:
+  - type: book
+    title: The Pragmatic Programmer (20th Anniversary Edition)
+    authors:
+      - {given-names: Andy, family-names: Hunt}
+      - {given-names: Dave, family-names: Thomas}
+    publisher: {name: Addison-Wesley Professional}
+    year: 2019
+    isbn: "978-0135957059"
+  - type: book
+    title: Clean Code
+    authors:
+      - {given-names: Robert C., family-names: Martin}
+    publisher: {name: Prentice Hall}
+    year: 2008
+    isbn: "978-0132350884"
+  - type: book
+    title: Code Complete (2nd Edition)
+    authors:
+      - {given-names: Steve, family-names: McConnell}
+    publisher: {name: Microsoft Press}
+    year: 2004
+    isbn: "978-0735619678"
+  - type: book
+    title: A Philosophy of Software Design (2nd Edition)
+    authors:
+      - {given-names: John, family-names: Ousterhout}
+    publisher: {name: Yaknyam Press}
+    year: 2021
+    isbn: "978-1732102217"
+  - type: book
+    title: Refactoring (2nd Edition)
+    authors:
+      - {given-names: Martin, family-names: Fowler}
+    publisher: {name: Addison-Wesley Professional}
+    year: 2018
+    isbn: "978-0134757599"
+  - type: book
+    title: The Mythical Man-Month (Anniversary Edition)
+    authors:
+      - {given-names: Frederick P., family-names: Brooks Jr.}
+    publisher: {name: Addison-Wesley Professional}
+    year: 1995
+    isbn: "978-0201835953"
+  - type: book
+    title: Designing Data-Intensive Applications
+    authors:
+      - {given-names: Martin, family-names: Kleppmann}
+    publisher: {name: O'Reilly Media}
+    year: 2017
+    isbn: "978-1449373320"
+  - type: book
+    title: Working Effectively with Legacy Code
+    authors:
+      - {given-names: Michael C., family-names: Feathers}
+    publisher: {name: Prentice Hall}
+    year: 2004
+    isbn: "978-0131177055"
+  - type: book
+    title: Release It! (2nd Edition)
+    authors:
+      - {given-names: Michael T., family-names: Nygard}
+    publisher: {name: Pragmatic Bookshelf}
+    year: 2018
+    isbn: "978-1680502398"
+  - type: book
+    title: Software Engineering at Google
+    authors:
+      - {given-names: Titus, family-names: Winters}
+      - {given-names: Tom, family-names: Manshreck}
+      - {given-names: Hyrum, family-names: Wright}
+    publisher: {name: O'Reilly Media}
+    year: 2020
+    isbn: "978-1492082798"
