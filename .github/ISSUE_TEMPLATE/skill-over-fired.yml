@@ -1,0 +1,78 @@
+name: Skill over-fired (ceremony where none was needed)
+description: Report a case where staff-engineer-mode activated for a trivial task and added unwanted ceremony.
+title: "[over-fire] "
+labels: ["over-fire", "bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The skill's Activation and Decision Tree explicitly list trivial cases that should be SKIPPED. If yours wasn't skipped, that's the bug.
+
+  - type: textarea
+    id: prompt
+    attributes:
+      label: The prompt you sent Claude
+      description: Trivial-task prompts especially — renames, typo fixes, one-line config, single-question lookups.
+      placeholder: |
+        e.g. Rename the variable `usr` to `user` in this file.
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: ceremony
+    attributes:
+      label: What ceremony fired that you didn't want
+      placeholder: |
+        e.g. Asked me to write a contract for a one-line rename. Ran a pre-mortem for a typo fix.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Which skip category does this prompt fall into
+      description: Per SKILL.md "Activation > Skip when"
+      options:
+        - rename
+        - import re-order
+        - one-line config tweak
+        - doc / typo fix
+        - throwaway spike
+        - read-only Q&A
+        - other (new skip case to add)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: model
+    attributes:
+      label: Claude model
+      options:
+        - opus-4.7
+        - opus-4.6
+        - sonnet-4.6
+        - sonnet-4.5
+        - haiku-4.5
+        - other
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Skill version
+      placeholder: "1.0.0"
+    validations:
+      required: true
+
+  - type: input
+    id: bench
+    attributes:
+      label: Closest negative-case eval (B-15 to B-18)
+      placeholder: "e.g. B-15 (rename) or B-17 (read-only)"
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else

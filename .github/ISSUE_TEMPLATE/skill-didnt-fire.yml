@@ -1,0 +1,87 @@
+name: Skill did not fire when it should have
+description: Report a case where staff-engineer-mode should have activated but didn't, or activated without producing the expected behavior.
+title: "[under-fire] "
+labels: ["under-fire", "bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. The verbatim prompt is the most important field — without it the issue cannot be reproduced.
+
+  - type: textarea
+    id: prompt
+    attributes:
+      label: The prompt you sent Claude
+      description: Paste it verbatim. Do not paraphrase.
+      placeholder: |
+        e.g. The payment service occasionally returns 500. Just add a retry to our caller.
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected staff-engineer-mode to do
+      description: Reference the relevant SKILL.md section if you know it (Phase number, RF-XX, decision-tree branch).
+      placeholder: |
+        e.g. Should have cited refusal-scripts.md and asked about the upstream failure mode before adding a retry.
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: What actually happened
+      description: Paste Claude's response, OR describe the behavior gap.
+      render: shell
+    validations:
+      required: true
+
+  - type: dropdown
+    id: model
+    attributes:
+      label: Claude model
+      options:
+        - opus-4.7
+        - opus-4.6
+        - sonnet-4.6
+        - sonnet-4.5
+        - haiku-4.5
+        - other (specify in "anything else")
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Skill version
+      description: "Get this with: cat VERSION (or `git log -1 --oneline`)"
+      placeholder: "1.0.0"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: install
+    attributes:
+      label: How did you install
+      options:
+        - "`npx skills add`"
+        - "`/plugin install` (Claude Code)"
+        - manual git clone
+        - other
+    validations:
+      required: true
+
+  - type: input
+    id: bench
+    attributes:
+      label: Closest bench eval
+      description: If you can map your prompt to a B-XX entry in bench.md, name it. Helps triage and may indicate regression.
+      placeholder: "e.g. B-01"
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else
+      description: Logs, screenshots, conversation transcript links, other context.

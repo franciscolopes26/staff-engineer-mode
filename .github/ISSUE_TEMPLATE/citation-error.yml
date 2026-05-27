@@ -1,0 +1,57 @@
+name: Citation error (book / chapter / tip)
+description: Report a chapter, tip, or section citation that is incorrect.
+title: "[citation] "
+labels: ["citation", "documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The skill's "grounded chapter-by-chapter" claim depends on citations being verifiable. Help us keep them honest.
+
+  - type: input
+    id: location
+    attributes:
+      label: File and line number
+      description: Where the citation appears.
+      placeholder: "e.g. skills/staff-engineer-mode/SKILL.md:147"
+    validations:
+      required: true
+
+  - type: textarea
+    id: current
+    attributes:
+      label: The citation as written
+      description: Quote the exact citation text.
+      placeholder: |
+        e.g. "(Beck, via Fowler ch. 1)"
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: wrong
+    attributes:
+      label: Why it's wrong
+      description: What does the cited chapter actually contain? Where would the correct citation point?
+    validations:
+      required: true
+
+  - type: textarea
+    id: correction
+    attributes:
+      label: Suggested correction
+      description: Ready-to-paste corrected citation.
+      placeholder: |
+        e.g. "(Beck, via Fowler ch. 2 'Principles in Refactoring')"
+      render: shell
+    validations:
+      required: true
+
+  - type: input
+    id: source
+    attributes:
+      label: Verification source URL
+      description: Publisher page, author's site, GitHub-hosted text like abseil.io/resources/swe-book.
+      placeholder: "https://..."
+    validations:
+      required: true
