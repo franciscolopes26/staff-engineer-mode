@@ -1,0 +1,25 @@
+{
+  "name": "staff-engineer-mode",
+  "description": "Principal-engineer operating mode for non-trivial coding (implement, debug, refactor, design, review). Enforces a 5-phase loop with 30 red flags, the 3-strike rule, cognitive layers for software and security, and paste-able templates. Grounded chapter-by-chapter in 10 canonical engineering books.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Francisco Lopes"
+  },
+  "homepage": "https://github.com/franciscolopes26/staff-engineer-mode",
+  "repository": "https://github.com/franciscolopes26/staff-engineer-mode",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "claude-skill",
+    "software-engineering",
+    "principal-engineer",
+    "staff-engineer",
+    "code-review",
+    "refactoring",
+    "debugging",
+    "architecture",
+    "security",
+    "threat-modeling",
+    "best-practices"
+  ]
+}

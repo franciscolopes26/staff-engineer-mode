@@ -40,24 +40,42 @@ Most engineering mistakes are not from lack of knowledge. They are from skipping
 
 ## Installation
 
-1. Clone or copy this directory to `~/.claude/skills/staff-engineer-mode/`:
+This is a Claude Code plugin. Two commands inside any Claude Code session:
 
-   ```bash
-   git clone <repo-url> ~/.claude/skills/staff-engineer-mode
-   ```
+```text
+/plugin marketplace add franciscolopes26/staff-engineer-mode
+/plugin install staff-engineer-mode@staff-engineer-mode
+```
 
-   Or download the latest release and extract into `~/.claude/skills/`.
+That's it. The plugin will be cloned into `~/.claude/plugins/cache/` and the skill becomes available in subsequent sessions. Reload with `/reload-plugins` if needed.
 
-2. Restart your Claude Code session. The skill will appear in the available-skills list.
+Optionally, add an auto-load directive to your `~/.claude/CLAUDE.md`:
 
-3. Optionally, add an automatic-load rule to your `~/.claude/CLAUDE.md`:
+```markdown
+For any non-trivial coding task (debug, refactor, design, review),
+load the `staff-engineer-mode` skill before starting.
+```
 
-   ```markdown
-   For any non-trivial coding task (debug, refactor, design, review),
-   load the `staff-engineer-mode` skill before starting.
-   ```
+### Updating
 
-That's it. The skill is plain Markdown — no dependencies, no installation step.
+```text
+/plugin marketplace update staff-engineer-mode
+/plugin install staff-engineer-mode@staff-engineer-mode --force
+```
+
+### Uninstall
+
+```text
+/plugin uninstall staff-engineer-mode@staff-engineer-mode
+/plugin marketplace remove staff-engineer-mode
+```
+
+### Manual install (for development / contributing)
+
+```bash
+git clone https://github.com/franciscolopes26/staff-engineer-mode ~/code/staff-engineer-mode
+# Then point Claude Code at the local plugin via /plugin marketplace add ~/code/staff-engineer-mode
+```
 
 ## Usage
 
@@ -91,35 +109,37 @@ Multiple skills compose; you do not have to choose.
 ## Repository structure
 
 ```
-staff-engineer-mode/
-├── SKILL.md                          The operating mode (the skill itself).
-├── README.md                         This file.
-├── LICENSE                           MIT License.
-├── NOTICE                            Source-book attributions.
-├── CONTRIBUTING.md                   How to extend or contribute.
-├── VERSION                           Semantic version.
-├── references/                       One file per canonical book — loaded on demand.
-│   ├── pragmatic-programmer.md
-│   ├── clean-code.md
-│   ├── code-complete.md
-│   ├── philosophy-of-software-design.md
-│   ├── refactoring.md
-│   ├── mythical-man-month.md
-│   ├── designing-data-intensive-applications.md
-│   ├── working-effectively-with-legacy-code.md
-│   ├── release-it.md
-│   └── software-engineering-at-google.md
-└── scripts/                          Paste-able templates and helpers.
-    ├── phase-checklist.md            Five-phase checklist + 3-strike rule.
-    ├── contracts.md                  Phase 2 template (pre/post/invariants).
-    ├── pre-mortem.md                 Phase 3 failure-mode enumeration.
-    ├── verify.md                     Phase 5 surface-by-surface verification.
-    └── find-callers.sh               Phase 1 helper — find callers of a symbol.
+staff-engineer-mode/                       (repo root = plugin root)
+├── .claude-plugin/                        Plugin & marketplace manifests
+│   ├── plugin.json
+│   └── marketplace.json
+├── README.md, LICENSE, NOTICE,            Repo-level metadata
+│   CONTRIBUTING.md, VERSION
+└── skills/
+    └── staff-engineer-mode/               The skill itself
+        ├── SKILL.md                       Operating mode — 5-phase loop,
+        │                                  Iron Laws, 30 red flags, C-level layer
+        ├── MINDSET.md                     15 cognitive moves on software thinking
+        ├── SECURITY.md                    15 attack-surface moves + STRIDE
+        ├── bench.md                       15 eval prompts to verify the skill fires
+        ├── references/                    10 per-book digests with quotes + sources
+        ├── scripts/                       10 paste-able helpers + 1 bash script
+        │   ├── phase-checklist.md         5-phase checklist + 3-strike rule
+        │   ├── contracts.md               Phase 2 template
+        │   ├── pre-mortem.md              Phase 3 template
+        │   ├── verify.md                  Phase 5 surface-by-surface
+        │   ├── find-callers.sh            Phase 1 helper
+        │   ├── decisions.md               ADR template
+        │   ├── calibrate.md               Confidence calibration
+        │   ├── refusal-scripts.md         Pre-built pushback phrasings
+        │   ├── communication.md           Commit / PR / design doc / post-mortem
+        │   └── threat-model.md            STRIDE template
+        ├── anti-patterns/                 10 anti-patterns with real code
+        ├── playbooks/                     7 situation-specific recipes
+        └── examples/                      1 worked walkthrough of the loop
 ```
 
-The skill follows the **progressive disclosure** pattern: only `SKILL.md`'s metadata (~100 tokens) loads at startup; the body loads when triggered; `references/` and `scripts/` load only when referenced. Total cost when idle is negligible.
-
-Possible future additions (welcomed via `CONTRIBUTING.md`): `scenarios/` (worked examples), `languages/` (per-language application), `anti-patterns/` (anti-patterns with code).
+Follows the **progressive disclosure** pattern: only the SKILL.md description (~100 tokens) loads at startup; the body (~3.4k tokens) loads when triggered; `references/`, `scripts/`, `anti-patterns/`, `playbooks/`, and `examples/` load only when referenced. Total cost when idle is negligible.
 
 ## Canonical sources
 

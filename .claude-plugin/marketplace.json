@@ -1,0 +1,29 @@
+{
+  "name": "staff-engineer-mode",
+  "description": "Marketplace for the staff-engineer-mode skill — principal-engineer operating mode grounded in 10 canonical software engineering books.",
+  "owner": {
+    "name": "Francisco Lopes"
+  },
+  "plugins": [
+    {
+      "name": "staff-engineer-mode",
+      "description": "Principal-engineer operating mode: 5-phase loop, 30 red flags, cognitive layers for software and security, grounded chapter-by-chapter in 10 canonical engineering books.",
+      "version": "1.0.0",
+      "source": "./",
+      "author": {
+        "name": "Francisco Lopes"
+      },
+      "license": "MIT",
+      "homepage": "https://github.com/franciscolopes26/staff-engineer-mode",
+      "repository": "https://github.com/franciscolopes26/staff-engineer-mode",
+      "keywords": [
+        "claude-code",
+        "skill",
+        "engineering",
+        "principal-engineer",
+        "code-review",
+        "security"
+      ]
+    }
+  ]
+}
